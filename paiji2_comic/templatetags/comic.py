@@ -1,6 +1,9 @@
 from django import template
 from datetime import date
 from django.utils import timezone
+from bs4 import BeautifulSoup
+import urllib2
+import socket
 
 register = template.Library()
 
@@ -43,4 +46,39 @@ def get_tokei():
         'img_alt': url_str,
         'legend': 'bijin tokei',
         'legend_url': 'http://www.bijint.com/jp/'
+    }
+
+@register.inclusion_tag(
+    'comic/comic_block.html',
+)
+def get_apod():
+    url_str = date.today().strftime('%y%m%d')
+    url = 'http://apod.nasa.gov/apod/ap' + url_str + '.html'
+
+    try:
+        content = BeautifulSoup(urllib2.urlopen(url).read(), 'html.parser')
+    except socket.timeout:
+        print("apod fetcher timed out")
+        return dict()
+    except urllib2.URLError:
+        print("apod : url failed")
+        return dict()
+
+    try:
+        img_url_str = content.img['src']
+    except:
+        print("apod img url : bad html")
+        return dict()
+
+    try:
+        img_legend = unicode(content.b.string)
+    except:
+        print("apod img legend : bad html")
+        img_legend = 'Astronomical Picture Of the Day',
+
+    return {
+        'img_src': 'http://apod.nasa.gov/apod/' + img_url_str,
+        'img_alt': img_legend,
+        'legend': img_legend,
+        'legend_url': url,
     }

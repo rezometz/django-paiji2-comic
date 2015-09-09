@@ -42,3 +42,17 @@ class BijinTokeiModule(ModuleApp):
         ),
     ]
 modules.register(BijinTokeiModule)
+
+class APODModule(ModuleApp):
+    app_name = 'APOD'
+    name = 'APOD'
+    urls = None
+    templatetag_blocks = [
+        TemplateTagBlock(
+            name='APOD',
+            library='comic',
+            tag='get_apod',
+            cache_time=60 * 60,
+        ),
+    ]
+modules.register(APODModule)
