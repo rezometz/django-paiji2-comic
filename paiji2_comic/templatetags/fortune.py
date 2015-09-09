@@ -15,8 +15,9 @@ def get_fortune():
         else:
             fortune_bin = '/usr/games/fortune'
         fortune = unicode(os.popen(fortune_bin).read())
-    except:
+    except Exception:
         fortune = u'Were they afraid that "e" being the most widely used letter in\nthe English language was going to war out thir xpnsiv kyboards if\nthy usd it all th tim?\n\n\t- Mike A. Harris on linux-kernel\n'
         print("fortune : error reading `fortune` command")
+        print("fortune : exception :" + Exception.message)
 
     return { 'fortune': fortune }
