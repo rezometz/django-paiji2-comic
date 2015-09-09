@@ -56,3 +56,17 @@ class APODModule(ModuleApp):
         ),
     ]
 modules.register(APODModule)
+
+class MathImgModule(ModuleApp):
+    app_name = 'math_img'
+    name = 'math_img'
+    urls = None
+    templatetag_blocks = [
+        TemplateTagBlock(
+            name='math_img',
+            library='comic',
+            tag='get_math_image',
+            cache_time=60 * 60,
+        ),
+    ]
+modules.register(MathImgModule)

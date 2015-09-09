@@ -82,3 +82,37 @@ def get_apod():
         'legend': img_legend,
         'legend_url': url,
     }
+
+@register.inclusion_tag(
+    'comic/comic_block.html',
+)
+def get_math_image():
+    url = 'http://images.math.cnrs.fr/'
+
+    try:
+        content = BeautifulSoup(urllib2.urlopen(url).read(), 'html.parser')
+    except socket.timeout:
+        print("math img fetcher timed out")
+        return dict()
+    except urllib2.URLError:
+        print("math img : url failed")
+        return dict()
+
+    try:
+        img_url_str = content.find(attrs={"class": "block-image"}).img['src']
+    except:
+        print("math  img url : bad html")
+        return dict()
+
+    try:
+        legend_url = url + content.find(attrs={"class": "block-image"}).a['href']
+    except:
+        print("math legend url : bad html")
+        legend_url = url
+
+    return {
+        'img_src': url + img_url_str,
+        'img_alt': 'Image des maths du jour',
+        'legend': "L’image des maths du jour",
+        'legend_url': legend_url,
+    }
