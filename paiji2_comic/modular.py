@@ -28,3 +28,17 @@ class USAcresComicModule(ModuleApp):
         ),
     ]
 modules.register(USAcresComicModule)
+
+class BijinTokeiModule(ModuleApp):
+    app_name = 'bijin-tokei'
+    name = 'bijin-tokei'
+    urls = None
+    templatetag_blocks = [
+        TemplateTagBlock(
+            name='bijin-tokei',
+            library='comic',
+            tag='get_tokei',
+            cache_time=30,
+        ),
+    ]
+modules.register(BijinTokeiModule)
