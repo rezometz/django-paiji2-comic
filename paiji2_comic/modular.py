@@ -135,3 +135,20 @@ class EAModule(ModuleApp):
 
 
 modules.register(EAModule)
+
+
+class MetArtworkModule(ModuleApp):
+    app_name = 'Artwork of the day'
+    name = 'Artwork of the day'
+    urls = None
+    templatetag_blocks = [
+        TemplateTagBlock(
+            name='Artwork of the day',
+            library='comic',
+            tag='get_met_artwork',
+            cache_time=60*60,
+        ),
+    ]
+
+
+modules.register(MetArtworkModule)

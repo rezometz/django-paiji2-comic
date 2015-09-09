@@ -4,6 +4,7 @@ from django.utils import timezone
 from bs4 import BeautifulSoup
 import urllib2
 import socket
+import feedparser
 
 
 register = template.Library()
@@ -74,7 +75,7 @@ def get_apod():
     try:
         img_legend = unicode(content.b.string)
     except:
-        print("apod img legend : bad html")
+        print("apod img legend : bad html")
         img_legend = 'Astronomical Picture Of the Day',
 
     return {
@@ -108,13 +109,13 @@ def get_math_image():
     try:
         legend_url = url + content.find(attrs={"class": "block-image"}).a['href']
     except:
-        print("math legend url : bad html")
+        print("math legend url : bad html")
         legend_url = url
 
     return {
         'img_src': url + img_url_str,
         'img_alt': 'Image des maths du jour',
-        'legend': "L’image des maths du jour",
+        'legend': "L'image des maths du jour",
         'legend_url': legend_url,
     }
 
@@ -143,7 +144,7 @@ def get_ng():
     try:
         img_legend = content.find(attrs={'class':'primary_photo'}).img['alt']
     except:
-        print("apod img legend : bad html")
+        print("apod img legend : bad html")
         img_legend = 'National Geographic Photo Of The Day'
 
     return {
@@ -178,7 +179,7 @@ def get_eaiotd():
     try:
         img_legend = content.find(attrs={'class':'daily-image'}).img['alt']
     except:
-        print("eaiotd img legend : bad html")
+        print("eaiotd img legend : bad html")
         img_legend = 'Earth Observatory Image Of The Day'
 
     return {
@@ -186,4 +187,31 @@ def get_eaiotd():
         'img_alt': img_legend,
         'legend': img_legend,
         'legend_url': url,
+    }
+
+
+@register.inclusion_tag(
+    'comic/comic_block.html',
+)
+def get_met_artwork():
+    rss_url = 'http://www.metmuseum.org/collection/artwork-of-the-day?rss=1'
+    try:
+        entry = feedparser.parse(rss_url).entries[0]
+        description = entry.description
+        title = entry.title
+        link = entry.link
+        html_content = BeautifulSoup(urllib2.urlopen(link).read())
+        img = html_content.find(attrs={'class': 'image-container'}).img
+        img_src = img['src']
+        img_alt = img['alt']
+    except Exception as e:
+        print("met artwork : unable to parse the feed")
+        print("met artwork : " + e.message)
+        return dict()
+    
+    return {
+        'img_src': img_src,
+        'img_alt': img_alt,
+        'legend': title,
+        'legend_url': link,
     }
