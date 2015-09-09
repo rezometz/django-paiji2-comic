@@ -1,0 +1,5 @@
+include README.markdown
+include LICENSE
+include COPYING
+recursive-include paiji2_comic/static *
+recursive-include paiji2_comic/templates *
