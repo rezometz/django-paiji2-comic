@@ -10,10 +10,10 @@ with open(os.path.join(os.path.dirname(__file__), 'README.markdown')) as readme:
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 # compile django.po files (translations)
-curdir = os.getcwd()
-os.chdir('paiji2_comic')
-management.call_command('compilemessages', stdout=sys.stdout)
-os.chdir(curdir)
+# curdir = os.getcwd()
+# os.chdir('paiji2_comic')
+# management.call_command('compilemessages', stdout=sys.stdout)
+# os.chdir(curdir)
 
 setup(
     name='django-paiji2-comic',
