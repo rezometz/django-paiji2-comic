@@ -13,7 +13,10 @@ class GarfieldComicModule(ModuleApp):
             cache_time=60 * 60,
         ),
     ]
+
+
 modules.register(GarfieldComicModule)
+
 
 class USAcresComicModule(ModuleApp):
     app_name = 'us-acres-comic'
@@ -27,7 +30,10 @@ class USAcresComicModule(ModuleApp):
             cache_time=60 * 60,
         ),
     ]
+
+
 modules.register(USAcresComicModule)
+
 
 class BijinTokeiModule(ModuleApp):
     app_name = 'bijin-tokei'
@@ -41,32 +47,57 @@ class BijinTokeiModule(ModuleApp):
             cache_time=30,
         ),
     ]
+
+
 modules.register(BijinTokeiModule)
 
+
 class APODModule(ModuleApp):
-    app_name = 'APOD'
-    name = 'APOD'
+    app_name = 'Astronomical Picture Of the Day'
+    name = 'Astronomical Picture Of the Day'
     urls = None
     templatetag_blocks = [
         TemplateTagBlock(
-            name='APOD',
+            name='Astronomical Picture Of the Day',
             library='comic',
             tag='get_apod',
             cache_time=60 * 60,
         ),
     ]
+
+
 modules.register(APODModule)
 
+
 class MathImgModule(ModuleApp):
-    app_name = 'math_img'
-    name = 'math_img'
+    app_name = 'Image des Maths'
+    name = 'Image des Maths'
     urls = None
     templatetag_blocks = [
         TemplateTagBlock(
-            name='math_img',
+            name='Image des Maths',
             library='comic',
             tag='get_math_image',
             cache_time=60 * 60,
         ),
     ]
+
+
 modules.register(MathImgModule)
+
+
+class FortuneModule(ModuleApp):
+    app_name = 'Fortune'
+    name = 'Fortune'
+    urls = None
+    templatetag_blocks = [
+        TemplateTagBlock(
+            name='Fortune',
+            library='fortune',
+            tag='get_fortune',
+            cache_time=5,
+        ),
+    ]
+
+
+modules.register(FortuneModule)
