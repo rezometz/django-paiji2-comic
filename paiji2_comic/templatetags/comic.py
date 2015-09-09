@@ -144,10 +144,45 @@ def get_ng():
         img_legend = content.find(attrs={'class':'primary_photo'}).img['alt']
     except:
         print("apod img legend : bad html")
-        img_legend = 'Astronomical Picture Of the Day',
+        img_legend = 'National Geographic Photo Of The Day'
 
     return {
         'img_src': 'http:' + img_url_str,
+        'img_alt': img_legend,
+        'legend': img_legend,
+        'legend_url': url,
+    }
+
+
+@register.inclusion_tag(
+    'comic/comic_block.html',
+)
+def get_eaiotd():
+    url = 'http://www.earthobservatory.nasa.gov/IOTD/'
+
+    try:
+        content = BeautifulSoup(urllib2.urlopen(url).read(), 'html.parser')
+    except socket.timeout:
+        print("eaiotd fetcher timed out")
+        return dict()
+    except urllib2.URLError:
+        print("eaiotd : url failed")
+        return dict()
+
+    try:
+        img_url_str = content.find(attrs={'class':'daily-image'}).img['src']
+    except:
+        print("eaiotd img url : bad html")
+        return dict()
+
+    try:
+        img_legend = content.find(attrs={'class':'daily-image'}).img['alt']
+    except:
+        print("eaiotd img legend : bad html")
+        img_legend = 'Earth Observatory Image Of The Day'
+
+    return {
+        'img_src': img_url_str,
         'img_alt': img_legend,
         'legend': img_legend,
         'legend_url': url,

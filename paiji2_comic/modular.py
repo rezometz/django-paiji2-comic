@@ -109,7 +109,7 @@ class NGModule(ModuleApp):
     urls = None
     templatetag_blocks = [
         TemplateTagBlock(
-            name = 'National Geographic Photo of the Day',
+            name='National Geographic Photo of the Day',
             library='comic',
             tag='get_ng',
             cache_time=60*60,
@@ -118,3 +118,20 @@ class NGModule(ModuleApp):
 
 
 modules.register(NGModule)
+
+
+class EAModule(ModuleApp):
+    app_name = 'Earth Observatory Image of the Day'
+    name = 'Earth Observatory Image of the Day'
+    urls = None
+    templatetag_blocks = [
+        TemplateTagBlock(
+            name='Earth Observatory Image of the Day',
+            library='comic',
+            tag='get_eaiotd',
+            cache_time=60*60,
+        ),
+    ]
+
+
+modules.register(EAModule)
