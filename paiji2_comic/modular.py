@@ -101,3 +101,20 @@ class FortuneModule(ModuleApp):
 
 
 modules.register(FortuneModule)
+
+
+class NGModule(ModuleApp):
+    app_name = 'National Geographic Photo of the Day'
+    name = 'National Geographic Photo of the Day'
+    urls = None
+    templatetag_blocks = [
+        TemplateTagBlock(
+            name = 'National Geographic Photo of the Day',
+            library='comic',
+            tag='get_ng',
+            cache_time=60*60,
+        ),
+    ]
+
+
+modules.register(NGModule)

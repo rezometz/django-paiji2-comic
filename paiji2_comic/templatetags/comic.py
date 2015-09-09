@@ -117,3 +117,38 @@ def get_math_image():
         'legend': "L’image des maths du jour",
         'legend_url': legend_url,
     }
+
+
+@register.inclusion_tag(
+    'comic/comic_block.html',
+)
+def get_ng():
+    url = 'http://photography.nationalgeographic.com/photography/photo-of-the-day/'
+
+    try:
+        content = BeautifulSoup(urllib2.urlopen(url).read(), 'html.parser')
+    except socket.timeout:
+        print("NG fetcher timed out")
+        return dict()
+    except urllib2.URLError:
+        print("NG : url failed")
+        return dict()
+
+    try:
+        img_url_str = content.find(attrs={'class':'primary_photo'}).img['src']
+    except:
+        print("NG img url : bad html")
+        return dict()
+
+    try:
+        img_legend = content.find(attrs={'class':'primary_photo'}).img['alt']
+    except:
+        print("apod img legend : bad html")
+        img_legend = 'Astronomical Picture Of the Day',
+
+    return {
+        'img_src': 'http:' + img_url_str,
+        'img_alt': img_legend,
+        'legend': img_legend,
+        'legend_url': url,
+    }
