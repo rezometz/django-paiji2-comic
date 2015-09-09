@@ -152,3 +152,20 @@ class MetArtworkModule(ModuleApp):
 
 
 modules.register(MetArtworkModule)
+
+
+class LittreModule(ModuleApp):
+    app_name = 'Littre definition'
+    name = 'Littre definition'
+    urls = None
+    templatetag_blocks = [
+        TemplateTagBlock(
+            name='Littre definition',
+            library='fortune',
+            tag='get_littre',
+            cache_time=5,
+        ),
+    ]
+
+
+modules.register(LittreModule)

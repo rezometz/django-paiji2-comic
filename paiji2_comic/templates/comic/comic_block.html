@@ -1,6 +1,8 @@
 <div class="comic">
 	<a class="logo" href="{{ img_src }}">
-		<img style="width:100%;" src="{{ img_src }}" alt="{{ img_alt }}"/>
+		{% if img_src %}
+			<img style="width:100%;" src="{{ img_src }}" alt="{{ img_alt }}"/>
+		{% endif %}
 	</a>
 	<p class="text-center">
 		<a target="_blank" href="{{ legend_url }}">

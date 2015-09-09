@@ -1,9 +1,12 @@
 from django import template
 from django.conf import settings
+from urllib2 import urlopen
+from bs4 import BeautifulSoup as bs
 import os
 
 
 register = template.Library()
+
 
 @register.inclusion_tag(
     'comic/fortune_block.html',
@@ -26,4 +29,22 @@ def get_fortune():
         print("fortune : error reading `fortune` command")
         print("fortune : exception :" + e.message)
 
-    return { 'fortune': fortune }
+    return {'fortune': fortune}
+
+
+@register.inclusion_tag(
+    'comic/littre_block.html',
+)
+def get_littre():
+    url = 'http://www.littre.org/recherche'
+    try:
+        content = bs(urlopen(url).read())
+        definition = unicode(content.find(
+            'section',
+             attrs={'class': 'definition'},
+        ))
+    except Exception as e:
+        print("get_littre : " + e.message)
+        return dict()
+
+    return {'definition': definition}
