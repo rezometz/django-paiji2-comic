@@ -169,3 +169,20 @@ class LittreModule(ModuleApp):
 
 
 modules.register(LittreModule)
+
+
+class SaintModule(ModuleApp):
+    app_name = 'Saint du jour'
+    name = 'Saint du jour'
+    urls = None
+    templatetag_blocks = [
+        TemplateTagBlock(
+            name='Saint du jour',
+            library='fortune',
+            tag='get_saint',
+            cache_time=60*60,
+        ),
+    ]
+
+
+modules.register(SaintModule)

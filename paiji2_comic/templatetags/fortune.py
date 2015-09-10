@@ -3,6 +3,7 @@ from django.conf import settings
 from urllib2 import urlopen
 from bs4 import BeautifulSoup as bs
 import os
+import feedparser
 
 
 register = template.Library()
@@ -48,3 +49,21 @@ def get_littre():
         return dict()
 
     return {'definition': definition}
+
+
+@register.inclusion_tag(
+    'comic/feed_block.html',
+)
+def get_saint():
+    rss_url = 'http://nominis.cef.fr/rss/nominis.php'
+    try:
+        entry = feedparser.parse(rss_url).entries[0]
+    except Exception as e:
+        print("saint block : unable to parse the feed")
+        print("saint block : " + e.message)
+        return dict()
+    entries = [entry]
+    return {
+        'title': 'Saintes et Saints du jour',
+        'entries': entries,
+    }

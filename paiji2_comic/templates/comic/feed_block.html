@@ -1,0 +1,14 @@
+<h3>{{ title }}</h3>
+<ul class="entries list-unstyled">
+    {% for entry in entries %}
+    <li class="entry">
+        <h4>
+            <a href="{{ entry.link}}">
+                {{ entry.title }}
+            </a>
+        </h4>
+        {{ entry.description }}
+				<br/>
+    </li>
+    {% endfor %}
+</ul>
