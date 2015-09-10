@@ -52,6 +52,68 @@ def get_us_acres():
 @register.inclusion_tag(
     'comic/comic_block.html',
 )
+def get_calvin_and_hobbes():
+    url = 'http://www.gocomics.com/calvinandhobbes'
+
+    try:
+        req = urllib2.Request(
+            url,
+            headers={'User-Agent': 'Mozilla/5.0'},
+        )
+        content = BeautifulSoup(
+            urllib2.urlopen(req).read(),
+        )
+        img = content.find(
+            'img',
+            attrs={'class': 'strip'},
+        )
+    except Exception as e:
+        print('Calvin and Hobbes : unable top fetch/parse htm')
+        print('Calvin and Hobbes : ' + e.message)
+        return dict()
+
+    return {
+        'img_src': img['src'],
+        'img_alt': img['alt'],
+        'legend': 'Calvin and Hobbes',
+        'legend_url': url,
+    }
+
+
+@register.inclusion_tag(
+    'comic/comic_block.html',
+)
+def get_nancy():
+    url = 'http://www.gocomics.com/nancy'
+
+    try:
+        req = urllib2.Request(
+            url,
+            headers={'User-Agent': 'Mozilla/5.0'},
+        )
+        content = BeautifulSoup(
+            urllib2.urlopen(req).read(),
+        )
+        img = content.find(
+            'img',
+            attrs={'class': 'strip'},
+        )
+    except Exception as e:
+        print('Nancy : unable top fetch/parse htm')
+        print('Nancy : ' + e.message)
+        return dict()
+
+    return {
+        'img_src': img['src'],
+        'img_alt': img['alt'],
+        'legend': 'Nancy',
+        'legend_url': url,
+    }
+
+
+@register.inclusion_tag(
+    'comic/comic_block.html',
+)
 def get_tokei():
     url_str = _local_datetime().strftime('%H%M')
     return {

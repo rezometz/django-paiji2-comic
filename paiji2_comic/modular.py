@@ -35,6 +35,40 @@ class USAcresComicModule(ModuleApp):
 modules.register(USAcresComicModule)
 
 
+class CalvinAndHobbesComicModule(ModuleApp):
+    app_name = 'calvin-and-hobbes-comic'
+    name = 'calvin-and-hobbes-comic'
+    urls = None
+    templatetag_blocks = [
+        TemplateTagBlock(
+            name='calvin-and-hobbes-comic',
+            library='comic',
+            tag='get_calvin_and_hobbes',
+            cache_time=60 * 60,
+        ),
+    ]
+
+
+modules.register(CalvinAndHobbesComicModule)
+
+
+class NancyComicModule(ModuleApp):
+    app_name = 'nancy-comic'
+    name = 'nancy-comic'
+    urls = None
+    templatetag_blocks = [
+        TemplateTagBlock(
+            name='nancy-comic',
+            library='comic',
+            tag='get_nancy',
+            cache_time=60 * 60,
+        ),
+    ]
+
+
+modules.register(NancyComicModule)
+
+
 class BijinTokeiModule(ModuleApp):
     app_name = 'bijin-tokei'
     name = 'bijin-tokei'
