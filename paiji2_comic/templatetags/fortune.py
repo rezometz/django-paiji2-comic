@@ -6,6 +6,9 @@ import os
 import feedparser
 
 
+TIMEOUT = 1
+
+
 register = template.Library()
 
 
@@ -39,7 +42,7 @@ def get_fortune():
 def get_littre():
     url = 'http://www.littre.org/recherche'
     try:
-        content = bs(urlopen(url).read())
+        content = bs(urlopen(url, timeout=TIMEOUT).read())
         definition = unicode(content.find(
             'section',
              attrs={'class': 'definition'},

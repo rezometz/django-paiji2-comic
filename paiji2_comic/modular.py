@@ -44,7 +44,7 @@ class CalvinAndHobbesComicModule(ModuleApp):
             name='calvin-and-hobbes-comic',
             library='comic',
             tag='get_calvin_and_hobbes',
-            cache_time=60 * 60,
+            cache_time=3 * 60 * 60,
         ),
     ]
 
@@ -61,7 +61,7 @@ class NancyComicModule(ModuleApp):
             name='nancy-comic',
             library='comic',
             tag='get_nancy',
-            cache_time=60 * 60,
+            cache_time=3 * 60 * 60,
         ),
     ]
 
@@ -95,7 +95,7 @@ class APODModule(ModuleApp):
             name='Astronomical Picture Of the Day',
             library='comic',
             tag='get_apod',
-            cache_time=60 * 60,
+            cache_time=2 * 60 * 60,
         ),
     ]
 
@@ -112,7 +112,7 @@ class MathImgModule(ModuleApp):
             name='Image des Maths',
             library='comic',
             tag='get_math_image',
-            cache_time=60 * 60,
+            cache_time=2 * 60 * 60,
         ),
     ]
 
@@ -146,7 +146,7 @@ class NGModule(ModuleApp):
             name='National Geographic Photo of the Day',
             library='comic',
             tag='get_ng',
-            cache_time=60*60,
+            cache_time=2 * 60 * 60,
         ),
     ]
 
@@ -163,7 +163,7 @@ class EAModule(ModuleApp):
             name='Earth Observatory Image of the Day',
             library='comic',
             tag='get_eaiotd',
-            cache_time=60*60,
+            cache_time=2 * 60 * 60,
         ),
     ]
 

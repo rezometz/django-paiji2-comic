@@ -8,6 +8,8 @@ import feedparser
 import pytz
 
 
+TIMEOUT = 1.5
+
 register = template.Library()
 
 
@@ -61,7 +63,7 @@ def get_calvin_and_hobbes():
             headers={'User-Agent': 'Mozilla/5.0'},
         )
         content = BeautifulSoup(
-            urllib2.urlopen(req).read(),
+            urllib2.urlopen(req, timeout=TIMEOUT).read(),
         )
         img = content.find(
             'img',
@@ -92,7 +94,7 @@ def get_nancy():
             headers={'User-Agent': 'Mozilla/5.0'},
         )
         content = BeautifulSoup(
-            urllib2.urlopen(req).read(),
+            urllib2.urlopen(req, timeout=TIMEOUT).read(),
         )
         img = content.find(
             'img',
@@ -133,7 +135,7 @@ def get_apod():
     url = 'http://apod.nasa.gov/apod/ap' + url_str + '.html'
 
     try:
-        content = BeautifulSoup(urllib2.urlopen(url).read(), 'html.parser')
+        content = BeautifulSoup(urllib2.urlopen(url, timeout=TIMEOUT).read(), 'html.parser')
     except socket.timeout:
         print("apod fetcher timed out")
         return dict()
@@ -168,7 +170,7 @@ def get_math_image():
     url = 'http://images.math.cnrs.fr/'
 
     try:
-        content = BeautifulSoup(urllib2.urlopen(url).read(), 'html.parser')
+        content = BeautifulSoup(urllib2.urlopen(url, timeout=TIMEOUT).read(), 'html.parser')
     except socket.timeout:
         print("math img fetcher timed out")
         return dict()
@@ -203,7 +205,7 @@ def get_ng():
     url = 'http://photography.nationalgeographic.com/photography/photo-of-the-day/'
 
     try:
-        content = BeautifulSoup(urllib2.urlopen(url).read(), 'html.parser')
+        content = BeautifulSoup(urllib2.urlopen(url, timeout=TIMEOUT).read(), 'html.parser')
     except socket.timeout:
         print("NG fetcher timed out")
         return dict()
@@ -238,7 +240,7 @@ def get_eaiotd():
     url = 'http://www.earthobservatory.nasa.gov/IOTD/'
 
     try:
-        content = BeautifulSoup(urllib2.urlopen(url).read(), 'html.parser')
+        content = BeautifulSoup(urllib2.urlopen(url, timeout=TIMEOUT).read(), 'html.parser')
     except socket.timeout:
         print("eaiotd fetcher timed out")
         return dict()
@@ -276,7 +278,7 @@ def get_met_artwork():
         description = entry.description
         title = entry.title
         link = entry.link
-        html_content = BeautifulSoup(urllib2.urlopen(link).read())
+        html_content = BeautifulSoup(urllib2.urlopen(link, timeout=TIMEOUT).read())
         img = html_content.find(attrs={'class': 'image-container'}).img
         img_src = img['src']
         img_alt = img['alt']
