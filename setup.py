@@ -37,5 +37,6 @@ setup(
     ],
     install_requires=[
         'django-modular-blocks',
+        'feedparser>=5',
     ]
 )
