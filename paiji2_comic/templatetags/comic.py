@@ -1,20 +1,30 @@
 from django import template
-from datetime import date
+from datetime import datetime
 from django.utils import timezone
 from bs4 import BeautifulSoup
 import urllib2
 import socket
 import feedparser
+import pytz
 
 
 register = template.Library()
+
+
+def _NY_datetime():
+    NY_tz = pytz.timezone("America/New_York")
+    return NY_tz.normalize(timezone.now())
+
+
+def _local_datetime():
+    return timezone.localtime(timezone.now())
 
 
 @register.inclusion_tag(
     'comic/comic_block.html',
 )
 def get_garfield():
-    today_str = date.today().strftime('%Y-%m-%d')
+    today_str = _NY_datetime().strftime('%Y-%m-%d')
     return {
         'img_src':
             'http://garfield.com/uploads/strips/' + today_str + '.jpg',
@@ -23,12 +33,13 @@ def get_garfield():
         'legend_url': 'http://garfield.com/comic/' + today_str,
     }
 
+
 @register.inclusion_tag(
     'comic/comic_block.html',
 )
 def get_us_acres():
-    today_str = date.today().strftime('%Y-%m-%d')
-    url_str = date.today().strftime('usa1988-%m-%d')
+    today_str = _NY_datetime().strftime('%Y-%m-%d')
+    url_str = _NY_datetime().strftime('usa1988-%m-%d')
     return {
         'img_src':
             'http://garfield.com/uploads/usacres/' + url_str + '.jpg',
@@ -37,11 +48,12 @@ def get_us_acres():
         'legend_url': 'http://garfield.com/us-acres/' + today_str,
     }
 
+
 @register.inclusion_tag(
     'comic/comic_block.html',
 )
 def get_tokei():
-    url_str = timezone.localtime(timezone.now()).strftime('%H%M')
+    url_str = _local_datetime().strftime('%H%M')
     return {
         'img_src':
                 'http://www.bijint.com/assets/pict/jp/pc/' + url_str + '.jpg',
@@ -50,11 +62,12 @@ def get_tokei():
         'legend_url': 'http://www.bijint.com/jp/'
     }
 
+
 @register.inclusion_tag(
     'comic/comic_block.html',
 )
 def get_apod():
-    url_str = date.today().strftime('%y%m%d')
+    url_str = _NY_datetime().strftime('%y%m%d')
     url = 'http://apod.nasa.gov/apod/ap' + url_str + '.html'
 
     try:
@@ -84,6 +97,7 @@ def get_apod():
         'legend': img_legend,
         'legend_url': url,
     }
+
 
 @register.inclusion_tag(
     'comic/comic_block.html',
