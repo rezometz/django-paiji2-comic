@@ -237,3 +237,71 @@ class H16Module(ModuleApp):
 
 
 modules.register(H16Module)
+
+
+class SupelecModule(ModuleApp):
+    app_name = 'Supelec'
+    name = 'Supelec'
+    urls = None
+    templatetag_blocks = [
+        TemplateTagBlock(
+            name='Supelec',
+            library='fortune',
+            tag='get_supelec',
+            cache_time=60 * 60,
+        ),
+    ]
+
+
+modules.register(SupelecModule)
+
+
+class MetzModule(ModuleApp):
+    app_name = 'Metz'
+    name = 'Metz',
+    urls = None
+    templatetag_blocks = [
+        TemplateTagBlock(
+            name='Metz',
+            library='fortune',
+            tag='get_metz',
+            cache_time=60 * 60,
+        ),
+    ]
+
+
+modules.register(MetzModule)
+
+
+class OperaModule(ModuleApp):
+    app_name = 'Opera',
+    name = 'Opera',
+    urls = None
+    templatetag_blocks = [
+        TemplateTagBlock(
+            name='Opera',
+            library='fortune',
+            tag='get_opera',
+            cache_time=60 * 60,
+        ),
+    ]
+
+
+modules.register(OperaModule)
+
+
+class ArsenalModule(ModuleApp):
+    app_name = 'Arsenal',
+    name = 'Arsenal',
+    urls = None
+    templatetag_blocks = [
+        TemplateTagBlock(
+            name='Arsenal',
+            library='fortune',
+            tag='get_arsenal',
+            cache_time=60 * 60,
+        ),
+    ]
+
+
+modules.register(ArsenalModule)

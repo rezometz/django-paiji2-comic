@@ -83,3 +83,35 @@ def get_h16():
         url='http://h16free.com/feed',
         nb=3,
     )
+
+@register.inclusion_tag('comic/feed_block.html')
+def get_supelec():
+    return get_feed(
+        name='Supélec',
+        url='http://www.supelec.fr/rss_actu_428.xml',
+        nb=5,
+    )
+
+@register.inclusion_tag('comic/feed_block.html')
+def get_metz():
+    return get_feed(
+        name='Metz',
+        url='http://metz.fr/rss.php',
+        nb=5,
+    )
+
+@register.inclusion_tag('comic/feed_block.html')
+def get_opera():
+    return get_feed(
+        name='Opera',
+        url='http://opera.metzmetropole.fr/site/_rss_agenda.php',
+        nb=5,
+    )
+
+@register.inclusion_tag('comic/feed_block.html')
+def get_arsenal():
+    return get_feed(
+        name='Arsenal',
+        url='http://arsenal-metz.fr/fr/flux-rss-agendas-arsenal.rss',
+        nb=2,
+    )
