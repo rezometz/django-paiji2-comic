@@ -214,9 +214,26 @@ class SaintModule(ModuleApp):
             name='Saint du jour',
             library='fortune',
             tag='get_saint',
-            cache_time=60*60,
+            cache_time=60 * 60,
         ),
     ]
 
 
 modules.register(SaintModule)
+
+
+class H16Module(ModuleApp):
+    app_name = 'Hashtable'
+    name = 'Hashtable'
+    urls = None
+    templatetag_blocks = [
+        TemplateTagBlock(
+            name='Hashtable',
+            library='fortune',
+            tag='get_h16',
+            cache_time=30 * 60,
+        ),
+    ]
+
+
+modules.register(H16Module)

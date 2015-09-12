@@ -54,19 +54,32 @@ def get_littre():
     return {'definition': definition}
 
 
-@register.inclusion_tag(
-    'comic/feed_block.html',
-)
-def get_saint():
-    rss_url = 'http://nominis.cef.fr/rss/nominis.php'
+def get_feed(name, url, nb):
     try:
-        entry = feedparser.parse(rss_url).entries[0]
+        entries = feedparser.parse(url).entries
     except Exception as e:
-        print("saint block : unable to parse the feed")
-        print("saint block : " + e.message)
+        print(name + " feed block : unable to parse the feed")
+        print(name + " feed block : " + e.message)
         return dict()
-    entries = [entry]
     return {
-        'title': 'Saintes et Saints du jour',
-        'entries': entries,
+        'title': name,
+        'entries': entries[:nb],
     }
+
+
+@register.inclusion_tag('comic/feed_block.html')
+def get_saint():
+    return get_feed(
+        name='Saintes et Saints du jour',
+        url='http://nominis.cef.fr/rss/nominis.php',
+        nb=1,
+    )
+
+
+@register.inclusion_tag('comic/feed_block.html')
+def get_h16():
+    return get_feed(
+        name='Hashtable',
+        url='http://h16free.com/feed',
+        nb=3,
+    )

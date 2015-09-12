@@ -3,11 +3,11 @@
     {% for entry in entries %}
     <li class="entry">
         <h4>
-            <a href="{{ entry.link}}">
+            <a target="_blank" href="{{ entry.link}}">
                 {{ entry.title }}
             </a>
         </h4>
-        {{ entry.description }}
+        {{ entry.description|safe }}
 				<br/>
     </li>
     {% endfor %}
