@@ -1,4 +1,5 @@
 from django import template
+from django.conf import settings
 from datetime import datetime
 from django.utils import timezone
 from bs4 import BeautifulSoup
@@ -56,27 +57,9 @@ def get_us_acres():
 )
 def get_calvin_and_hobbes():
     url = 'http://www.gocomics.com/calvinandhobbes'
-
-    try:
-        req = urllib2.Request(
-            url,
-            headers={'User-Agent': 'Mozilla/5.0'},
-        )
-        content = BeautifulSoup(
-            urllib2.urlopen(req, timeout=TIMEOUT).read(),
-        )
-        img = content.find(
-            'img',
-            attrs={'class': 'strip'},
-        )
-    except Exception as e:
-        print('Calvin and Hobbes : unable top fetch/parse htm')
-        print('Calvin and Hobbes : ' + e.message)
-        return dict()
-
     return {
-        'img_src': img['src'],
-        'img_alt': img['alt'],
+        'img_src': settings.STATIC_URL + 'comics/calvinandhobbes.gif',
+        'img_alt': 'Calvin and Hobbes',
         'legend': 'Calvin and Hobbes',
         'legend_url': url,
     }
@@ -87,27 +70,9 @@ def get_calvin_and_hobbes():
 )
 def get_nancy():
     url = 'http://www.gocomics.com/nancy'
-
-    try:
-        req = urllib2.Request(
-            url,
-            headers={'User-Agent': 'Mozilla/5.0'},
-        )
-        content = BeautifulSoup(
-            urllib2.urlopen(req, timeout=TIMEOUT).read(),
-        )
-        img = content.find(
-            'img',
-            attrs={'class': 'strip'},
-        )
-    except Exception as e:
-        print('Nancy : unable top fetch/parse htm')
-        print('Nancy : ' + e.message)
-        return dict()
-
     return {
-        'img_src': img['src'],
-        'img_alt': img['alt'],
+        'img_src': settings.STATIC_URL + 'comics/nancy.gif',
+        'img_alt': 'Nancy',
         'legend': 'Nancy',
         'legend_url': url,
     }

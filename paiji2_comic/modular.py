@@ -49,7 +49,7 @@ class CalvinAndHobbesComicModule(ModuleApp):
     ]
 
 
-# modules.register(CalvinAndHobbesComicModule)
+modules.register(CalvinAndHobbesComicModule)
 
 
 class NancyComicModule(ModuleApp):
@@ -66,7 +66,7 @@ class NancyComicModule(ModuleApp):
     ]
 
 
-# modules.register(NancyComicModule)
+modules.register(NancyComicModule)
 
 
 class BijinTokeiModule(ModuleApp):
