@@ -69,14 +69,18 @@ for my $comic (@comics)
 		}
 		else
 		{
-			print "not a gif file\n";
-			exit 1;
+			throw Error::Simple('not a gif file');
 		}
 	}
 	except
 	{
 		my $E = shift;
-		print $E->{-text}, "\n";
+		print $E->text, "\n";
 		exit 1;
+	}
+	otherwise
+	{
+		print 'unknown error', "\n";
+		exit 2;
 	}
 }
