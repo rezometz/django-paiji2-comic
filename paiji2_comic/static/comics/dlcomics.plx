@@ -47,17 +47,19 @@ for my $comic (@comics)
 	$mech->get($strip->url());
 	print "downloaded ", $strip->url(), "\n";
 
-	if (open(my $file, '<', $link))
+	if (open(my $fh, '<', $link))
 	{
-		print "opening $file", "\n";
-		binmode($file);
-		if (md5_hex($mech->content()) eq Digest::MD5->new()->addfile($file)->hexdigest())
+		print "opening $link", "\n";
+		binmode($fh);
+		if (md5_hex($mech->content()) eq Digest::MD5->new()->addfile($fh)->hexdigest())
 		{
 			print "same file\n";
-			close($file);
+			close($fh);
+			print "closing $link", "\n";
 			next;
 		}
-		close($file);
+		close($fh);
+		print "closing $link", "\n";
 	}
 	$mech->save_content(
 		"$filename",
@@ -66,6 +68,5 @@ for my $comic (@comics)
 	print "saving as $filename", "\n";
 	link("$filename", "$link");
 	print "linking as $link", "\n";
-
 }
 exit 0;
