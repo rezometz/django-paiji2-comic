@@ -49,10 +49,12 @@ for my $comic (@comics)
 
 	if (open(my $file, '<', $link))
 	{
+		print "opening $file", "\n";
 		binmode($file);
 		if (md5_hex($mech->content()) eq Digest::MD5->new()->addfile($file)->hexdigest())
 		{
 			print "same file\n";
+			close($file);
 			next;
 		}
 		close($file);
