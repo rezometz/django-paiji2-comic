@@ -48,7 +48,12 @@ def get_littre():
             'section',
              attrs={'class': 'definition'},
         ))
-        vedette = urlencode(unicode(content.h2.string))
+        vedette = urlencode(unicode(
+            content.find(
+                'span',
+                attrs={'class': 'actif'},
+            ).string
+        ))
         link = 'http://www.littre.org/definition/' + vedette
     except Exception as e:
         print("get_littre : " + e.message)
