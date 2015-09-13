@@ -91,9 +91,7 @@ def get_that_is_priceless():
     }
 
 
-@register.inclusion_tag(
-    'comic/comic_block.html',
-)
+@register.inclusion_tag('comic/comic_block.html',)
 def get_tokei():
     url_str = _local_datetime().strftime('%H%M')
     return {
@@ -103,6 +101,11 @@ def get_tokei():
         'legend': 'bijin tokei',
         'legend_url': 'http://www.bijint.com/jp/'
     }
+
+
+@register.inclusion_tag('comic/tokei.html')
+def get_tokei():
+    return dict()
 
 
 @register.inclusion_tag(

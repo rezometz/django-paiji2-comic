@@ -1,0 +1,52 @@
+{% load static %}
+<div class="comic">
+	<form class="form-control" name="tokei_form">
+		<select onchange="tokeifun('tokei_id', 'tokei_legend_id');" name="tokei_list" size="1">
+			<option selected value="jp"> bo2014
+			<option selected value="2013jp"> bo2013
+			<option selected value="2012jp"> bo2012
+			<option value="tokyo"> tokyo
+			<option value="hokkaido"> hokkaido
+			<option value="cc"> circuit tokei
+			<option value="kagawa"> kagawa
+			<option value="kagoshima"> kagoshima
+			<option value="mask-bijin"> mask bijin
+			<option value="wasedastyle"> wasedastyle
+			<option value="kids-photostudio"> kids
+			<option value="kids-babydoll"> kids bis
+			<option value="okayama"> okayama
+			<option value="shizuoka"> shizuoka
+			<option value="hawaii"> hawaii
+			<option value="kumamoto"> kumamoto
+			<option value="sendai"> sendai
+			<option value="osaka"> osaka
+			<option value="megane"> megane tokei
+			<option value="okinawa"> okinawa
+			<option value="thailand"> thailand
+			<option value="taiwan"> taiwan
+			<option value="jakarta"> jakarta
+		</select>
+	</form>
+
+	<span id="tokei_id">
+		{# tokei.js will update this node with the good picture link #}
+		<a class="logo" href="{{ link }}">
+			<img style="width:100%;" src="{{ img_src }}" alt="{{ img_alt }}"/>
+		</a>
+	</span>
+	
+	<br/>
+
+	<p class="text-center" id="tokei_legend_id">
+		<a target="_blank" class="text-center" href="{{ legend_url }}">
+			{{ legend }}
+		</a>
+	</p>
+</div>
+
+<script type="text/javascript" src="{% static 'comics/js/tokei.js' %}">
+</script>
+
+<script type="text/javascript">
+	window.onload = tokeifun('tokei_id', 'tokei_legend_id');
+</script>
