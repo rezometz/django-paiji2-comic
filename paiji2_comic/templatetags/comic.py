@@ -58,7 +58,7 @@ def get_us_acres():
 def get_calvin_and_hobbes():
     url = 'http://www.gocomics.com/calvinandhobbes'
     return {
-        'img_src': settings.STATIC_URL + 'comics/calvinandhobbes.gif',
+        'img_src': settings.STATIC_URL + 'comics/calvinandhobbes',
         'img_alt': 'Calvin and Hobbes',
         'legend': 'Calvin and Hobbes',
         'legend_url': url,
@@ -71,7 +71,7 @@ def get_calvin_and_hobbes():
 def get_nancy():
     url = 'http://www.gocomics.com/nancy'
     return {
-        'img_src': settings.STATIC_URL + 'comics/nancy.gif',
+        'img_src': settings.STATIC_URL + 'comics/nancy',
         'img_alt': 'Nancy',
         'legend': 'Nancy',
         'legend_url': url,

@@ -44,7 +44,7 @@ class CalvinAndHobbesComicModule(ModuleApp):
             name='calvin-and-hobbes-comic',
             library='comic',
             tag='get_calvin_and_hobbes',
-            cache_time=3 * 60 * 60,
+            cache_time=5,
         ),
     ]
 
@@ -61,7 +61,7 @@ class NancyComicModule(ModuleApp):
             name='nancy-comic',
             library='comic',
             tag='get_nancy',
-            cache_time=3 * 60 * 60,
+            cache_time=5,
         ),
     ]
 
