@@ -91,21 +91,18 @@ def get_that_is_priceless():
     }
 
 
-@register.inclusion_tag('comic/comic_block.html',)
+@register.inclusion_tag('comic/tokei.html')
 def get_tokei():
+    # for those who do not have javascript enabled/installed
     url_str = _local_datetime().strftime('%H%M')
     return {
         'img_src':
-                'http://www.bijint.com/assets/pict/jp/pc/' + url_str + '.jpg',
+                'http://www.bijint.com/assets/pict/jp/pc/' +\
+                 url_str + '.jpg',
         'img_alt': url_str,
         'legend': 'bijin tokei',
         'legend_url': 'http://www.bijint.com/jp/'
     }
-
-
-@register.inclusion_tag('comic/tokei.html')
-def get_tokei():
-    return dict()
 
 
 @register.inclusion_tag(
