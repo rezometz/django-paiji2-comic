@@ -21,6 +21,7 @@ $mech->agent_alias('Windows Mozilla');
 my @comics = qw(
 	calvinandhobbes
 	nancy
+	that-is-priceless
 );
 
 my $baseurl = 'http://www.gocomics.com/';

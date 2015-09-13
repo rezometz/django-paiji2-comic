@@ -69,6 +69,23 @@ class NancyComicModule(ModuleApp):
 modules.register(NancyComicModule)
 
 
+class ThatIsPricelessModule(ModuleApp):
+    app_name = 'That is priceless'
+    name = 'That is priceless'
+    urls = None
+    templatetag_blocks = [
+        TemplateTagBlock(
+            name='That is priceless',
+            library='comic',
+            tag='get_that_is_priceless',
+            cache_time=5,
+        ),
+    ]
+
+
+modules.register(ThatIsPricelessModule)
+
+
 class BijinTokeiModule(ModuleApp):
     app_name = 'bijin-tokei'
     name = 'bijin-tokei'

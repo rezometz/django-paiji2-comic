@@ -81,6 +81,19 @@ def get_nancy():
 @register.inclusion_tag(
     'comic/comic_block.html',
 )
+def get_that_is_priceless():
+    url = 'http://www.gocomics.com/that-is-priceless'
+    return {
+        'img_src': settings.STATIC_URL + 'comics/that-is-priceless',
+        'img_alt': 'That is priceless',
+        'legend': 'That is priceless',
+        'legend_url': url,
+    }
+
+
+@register.inclusion_tag(
+    'comic/comic_block.html',
+)
 def get_tokei():
     url_str = _local_datetime().strftime('%H%M')
     return {
