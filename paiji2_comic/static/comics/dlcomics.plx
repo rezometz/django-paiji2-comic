@@ -4,6 +4,7 @@
 use strict;
 use warnings;
 use WWW::Mechanize;
+# use Data::Dumper qw(Dumper);
 use Digest::MD5 qw(md5_hex);
 use DateTime;
 
@@ -29,21 +30,22 @@ my $baseurl = 'http://www.gocomics.com/';
 #
 for my $comic (@comics)
 {
-	print "trying getting $comic\n";
 	my $date = DateTime->now();
+	print "\n$date : trying getting $comic\n";
 	my $filename = "$comic--$date";
 	my $link = "$comic";
 	my $url = "$baseurl$comic";
 
 	$mech->get($url);
 
-	my $strip = $mech->find_image(
+	my @strips = $mech->find_all_images(
 		url_regex => qr/assets\.amuniversal\.com/,
 	);
 
-	print $strip->url(), "\n";
+	my $strip = $strips[1];  # second img (better quality)
 
 	$mech->get($strip->url());
+	print "downloaded ", $strip->url(), "\n";
 
 	if (open(my $file, '<', $link))
 	{
@@ -53,12 +55,15 @@ for my $comic (@comics)
 			print "same file\n";
 			next;
 		}
+		close($file);
 	}
-	{
-		$mech->save_content(
-			"$filename",
-			binmode => ':raw',
-		);
-		link("$filename", "$link");
-	}
+	$mech->save_content(
+		"$filename",
+		binmode => ':raw',
+	);
+	print "saving as $filename", "\n";
+	link("$filename", "$link");
+	print "linking as $link", "\n";
+
 }
+exit 0;
