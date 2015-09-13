@@ -1,0 +1,129 @@
+.annexe{max-width:80ex}
+
+.annexe .toc{float:right;padding:0.8ex 1ex;background-color:#f0f0ff;margin:2ex 0 3ex}
+
+.annexe .toc ul,.annexe .toc ol{margin:0}
+
+.annexe .toc ul{list-style:none}
+
+.annexe .toc ol{list-style-type:upper-roman;margin-left:1.6ex}
+
+.annexe p{text-align:justify}
+
+.annexe h1,.annexe h2{clear:right;font-variant:small-caps;text-align:center}
+
+.annexe h2{font-size:20px}
+
+.annexe h3{clear:right}
+
+#page-preface blockquote{text-align:justify}
+
+#page-preface p{text-indent:3ex;text-align:justify}
+
+#page-preface ol{padding:16px 20px}
+
+#page-preface ol li > p:first-child{text-indent:0}
+
+#page-preface q:before{content:"« "}
+
+#page-preface q:after{content:" »"}
+
+#page-prononciation li div{text-align:justify}
+
+#page-prononciation ol.details > li{margin-bottom:1ex}
+
+#page-prononciation ul{margin-top:0;padding-left:2ex}
+
+#page-livres-cites ul{list-style-type:none}
+
+#page-livres-cites li.oeuvre span{color:#000080;font-size:110%;font-weight:700}
+
+#page-livres-cites li.auteur span{color:#008000;font-size:110%;font-weight:700}
+
+div.vedette{text-align:center}
+
+#liens-externes{float:right;margin:1ex 1ex 1ex 2ex;padding-left:1.5ex;border-left:2px solid #80B080}
+
+#liens-externes p{margin:0}
+
+.definition{margin-top:1ex;max-width:120ex}
+
+.definition abbr{font-weight:600}
+
+.definition div,.definition p{margin:0;font-family:"Bitstream Vera Serif", Times, serif;font-size:13px}
+
+.definition dfn{font-size:12px}
+
+.definition div.entete{font-family:sans-serif;font-size:12px}
+
+.definition ul{list-style:none}
+
+.definition ul > li{font-family:"Bitstream Vera Serif", Times, serif;margin:1ex 0}
+
+.definition ul p{margin-bottom:4px}
+
+.definition ul p:before{content:"• "}
+
+.definition ol{counter-reset:item;list-style:outside;padding:0;margin:0 0 10px 0}
+
+.definition ol li,.definition div.suppvar{display:block;padding:0;margin:2.5ex 0 0.8ex 0ex}
+
+.definition ol li p{display:block;padding:0;margin:0;text-indent:4.3ex}
+
+.definition ol li:before{content:counter(item);counter-increment:item}
+
+.definition ol li:before,.definition ul > li > b.num,.definition div.suppvar b.num{border:1px solid black;text-align:center;background-color:rgb(70,70,150);color:white;font-weight:bold;padding:0 3px;margin:0 0.8ex 0 0}
+
+.definition ul > li:target > b.num{background-color:rgb(150, 60, 60)}
+
+.definition ul > li > b.num:target,.definition div.suppvar b.num:target{background-color:#F07070}
+
+.definition q{quotes:'' '' "'" "'";font-style:italic}
+
+.definition cite{display:block;margin:0 5ex;color:rgb(0,0,110)}
+
+.definition cite span.src{color:black;font-style:normal}
+
+.definition cite .aut{color:rgb(0,90,0);text-decoration:none;font-style:normal;font-variant:small-caps}
+
+.definition cite a:hover{text-decoration:underline}
+
+.definition cite .ref{color:#30a030;padding:0 2px 0 1px}
+
+.definition cite.def{display:inline-block;margin:0}
+
+.definition h3{margin-top:1.6ex;font-size:20px;line-height:22px}
+
+.definition div.r{margin:0;padding:0 0 0 2ex;border-left:1px dashed red}
+
+.definition div.r div.r h2{padding:2ex 0 0 0;margin:0 0 0 -2ex;background-color:white}
+
+.definition div.r div.r p{padding:0;margin:1ex 0 0 0}
+
+ol.citations > li{margin-top:1ex}
+
+ol.citations > li .aut{margin-right:2ex}
+
+ol.citations > li q{quotes:'' '' "'" "'"}
+
+ol.citations > li .aut{color:rgb(0,90,0);text-decoration:none;font-style:normal;font-variant:small-caps}
+
+ol.citations > li a:hover{text-decoration:underline}
+
+ol.citations > li .ref{color:#30a030}
+
+ol.matching-definitions > li{margin-top:1ex}
+
+ol.matching-definitions > li .vedette{font-size:14px;font-weight:bold}
+
+ol.proverbes > li{margin-top:1ex}
+
+ol.proverbes > li q{quotes:'' '' "'" "'"}
+
+ol.proverbes > li .explication{text-indent:1em}
+
+.excerpt{font-family:"Bitstream Vera Serif", Times, serif}
+
+#voisins ul li.actif{background-color:#eeeeff}
+
+#voisins a:visited{color:#551a8b}

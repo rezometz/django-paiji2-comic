@@ -1,9 +1,12 @@
+{% load static %}
 <div class="definition-container">
     {{ definition|safe }}
 </div>
 
+<link property="stylesheet" rel="stylesheet" type="text/css" href="{% static 'comics/css/littre.css' %}"/>
+
 <small class="text-center">
     Texte dans le domaine public —
-    HTML en CC-BY-SA 3.0 (François Gannaz) —
+    <a href="{{ link }}">HTML en CC-BY-SA 3.0 (François Gannaz)</a> —
     <a target="_blank" href="http://www.littre.org">littre.org</a>
 </small>

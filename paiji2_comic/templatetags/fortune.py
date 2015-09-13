@@ -4,6 +4,7 @@ from urllib2 import urlopen
 from bs4 import BeautifulSoup as bs
 import os
 import feedparser
+from django.template.defaultfilters import urlencode
 
 
 TIMEOUT = 1
@@ -47,11 +48,13 @@ def get_littre():
             'section',
              attrs={'class': 'definition'},
         ))
+        vedette = urlencode(unicode(content.h2.string))
+        link = 'http://www.littre.org/definition/' + vedette
     except Exception as e:
         print("get_littre : " + e.message)
         return dict()
 
-    return {'definition': definition}
+    return {'link': link, 'definition': definition}
 
 
 def get_feed(name, url, nb):
