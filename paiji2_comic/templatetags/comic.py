@@ -1,15 +1,19 @@
+import urllib2
+import socket
+import feedparser
+import pytz
+import subprocess
+import os
 from django import template
 from django.conf import settings
 from datetime import datetime
 from django.utils import timezone
 from bs4 import BeautifulSoup
-import urllib2
-import socket
-import feedparser
-import pytz
 
 
 TIMEOUT = 1.5
+BASE_DIR = os.path.dirname(__file__)
+geturl = os.path.join(BASE_DIR, 'geturl.pl')
 
 register = template.Library()
 
@@ -52,43 +56,34 @@ def get_us_acres():
     }
 
 
-@register.inclusion_tag(
-    'comic/comic_block.html',
-)
+def get_gocomic(slug, name):
+    legend_url = 'http://www.gocomics.com/' + slug
+    try:
+        img_src = subprocess.check_output([geturl] + [slug])
+    except:
+        # TODO
+        img_src = settings.STATIC_URL + 'comics/' + slug
+    return {
+        'img_src': img_src,
+        'img_alt': name,
+        'legend': name,
+        'legend_url': legend_url,
+    }
+
+
+@register.inclusion_tag('comic/comic_block.html')
 def get_calvin_and_hobbes():
-    url = 'http://www.gocomics.com/calvinandhobbes'
-    return {
-        'img_src': settings.STATIC_URL + 'comics/calvinandhobbes',
-        'img_alt': 'Calvin and Hobbes',
-        'legend': 'Calvin and Hobbes',
-        'legend_url': url,
-    }
+    return get_gocomic('calvinandhobbes', 'Calvin and Hobbes')
 
 
-@register.inclusion_tag(
-    'comic/comic_block.html',
-)
+@register.inclusion_tag('comic/comic_block.html')
 def get_nancy():
-    url = 'http://www.gocomics.com/nancy'
-    return {
-        'img_src': settings.STATIC_URL + 'comics/nancy',
-        'img_alt': 'Nancy',
-        'legend': 'Nancy',
-        'legend_url': url,
-    }
+    return get_gocomic('nancy', 'Nancy')
 
 
-@register.inclusion_tag(
-    'comic/comic_block.html',
-)
+@register.inclusion_tag('comic/comic_block.html')
 def get_that_is_priceless():
-    url = 'http://www.gocomics.com/that-is-priceless'
-    return {
-        'img_src': settings.STATIC_URL + 'comics/that-is-priceless',
-        'img_alt': 'That is priceless',
-        'legend': 'That is priceless',
-        'legend_url': url,
-    }
+    return get_gocomic('that-is-priceless', 'That is priceless')
 
 
 @register.inclusion_tag('comic/tokei.html')
