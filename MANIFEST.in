@@ -3,3 +3,4 @@ include LICENSE
 include COPYING
 recursive-include paiji2_comic/static *
 recursive-include paiji2_comic/templates *
+recursive-include paiji2_comic/templatetags *

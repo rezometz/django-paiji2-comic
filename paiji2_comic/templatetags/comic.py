@@ -60,9 +60,9 @@ def get_gocomic(slug, name):
     legend_url = 'http://www.gocomics.com/' + slug
     try:
         img_src = subprocess.check_output([geturl] + [slug])
-    except:
-        # TODO
+    except Exception as e:
         img_src = settings.STATIC_URL + 'comics/' + slug
+        print e.message
     return {
         'img_src': img_src,
         'img_alt': name,
