@@ -4,6 +4,7 @@ import feedparser
 import pytz
 import subprocess
 import os
+import re
 from django import template
 from django.conf import settings
 from datetime import datetime
@@ -57,12 +58,65 @@ def get_us_acres():
 
 
 def get_gocomic(slug, name):
+
     legend_url = 'http://www.gocomics.com/' + slug
+
     try:
-        img_src = subprocess.check_output([geturl] + [slug])
+
+        # img_src = subprocess.check_output([geturl] + [slug])
+        # (upper was the perl WWW::Mechanize solution)
+
+        request = urllib2.Request(legend_url)
+
+        # 403 error if you are a robot...
+        # so we simulate a real browser
+        request.add_header(
+            'User-Agent',
+            'Mozilla/5.0 (X11; Fedora; Linux x86_64; rv:40.0) Gecko/20100101 Firefox/40.0',
+        )
+        request.add_header('Referer', 'www.gocomics.com')
+        request.add_header('Host', 'www.gocomics.com')
+        request.add_header('DNT', '1')
+        request.add_header('Connection', 'keep-alive')
+        request.add_header('Cache-Control', 'max-age=0')
+        request.add_header(
+            'Accept-Language',
+            'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3',
+        )
+        # request.add_header('Accept-Encoding', 'gzip, deflate')
+        # we do not want gzipped data
+        request.add_header('Accept-Encoding', 'deflate')
+        request.add_header(
+            'Accept',
+            'text/html,application/xhtml+xml,\
+            application/xml;q=0.9,*/*;q=0.8',
+        )
+    
+        http_file = urllib2.urlopen(
+            request,
+            timeout=TIMEOUT,
+        )
+
+        code = http_file.getcode()
+
+        if code == 200:
+            soup = BeautifulSoup(
+                http_file.read(),
+                'html.parser',
+            )
+        else:
+            raise Exception(
+                'return code : ' + code
+            )
+
+        imgs = soup.find_all('img', src=re.compile(r"assets\.amuniversal\.com"),)
+        img_src = unicode(imgs[1]['src'])  # second picture : best quality
+
     except Exception as e:
+
         img_src = settings.STATIC_URL + 'comics/' + slug
-        print e.message
+        print('get_gocomic error : ' + e.message)
+
     return {
         'img_src': img_src,
         'img_alt': name,
