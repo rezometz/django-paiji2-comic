@@ -37,29 +37,29 @@ def get_fortune():
     return {'fortune': fortune}
 
 
-@register.inclusion_tag(
-    'comic/littre_block.html',
-)
-def get_littre():
-    url = 'http://www.littre.org/recherche'
-    try:
-        content = bs(urlopen(url, timeout=TIMEOUT).read())
-        definition = unicode(content.find(
-            'section',
-             attrs={'class': 'definition'},
-        ))
-        vedette = urlencode(unicode(
-            content.find(
-                'span',
-                attrs={'class': 'actif'},
-            ).string
-        ))
-        link = 'http://www.littre.org/definition/' + vedette
-    except Exception as e:
-        print("get_littre : " + e.message)
-        return dict()
-
-    return {'link': link, 'definition': definition}
+# @register.inclusion_tag(
+#     'comic/littre_block.html',
+# )
+# def get_littre():
+#     url = 'http://www.littre.org/recherche'
+#     try:
+#         content = bs(urlopen(url, timeout=TIMEOUT).read())
+#         definition = unicode(content.find(
+#             'section',
+#              attrs={'class': 'definition'},
+#         ))
+#         vedette = urlencode(unicode(
+#             content.find(
+#                 'span',
+#                 attrs={'class': 'actif'},
+#             ).string
+#         ))
+#         link = 'http://www.littre.org/definition/' + vedette
+#     except Exception as e:
+#         print("get_littre : " + e.message)
+#         return dict()
+# 
+#     return {'link': link, 'definition': definition}
 
 
 def get_feed(name, url, nb):

@@ -151,7 +151,7 @@ class FortuneModule(ModuleApp):
     ]
 
 
-modules.register(FortuneModule)
+# modules.register(FortuneModule)
 
 
 class NGModule(ModuleApp):
@@ -219,7 +219,7 @@ class LittreModule(ModuleApp):
     ]
 
 
-modules.register(LittreModule)
+# modules.register(LittreModule)
 
 
 class SaintModule(ModuleApp):
@@ -236,7 +236,7 @@ class SaintModule(ModuleApp):
     ]
 
 
-modules.register(SaintModule)
+# modules.register(SaintModule)
 
 
 class H16Module(ModuleApp):
@@ -253,7 +253,7 @@ class H16Module(ModuleApp):
     ]
 
 
-modules.register(H16Module)
+# modules.register(H16Module)
 
 
 class SupelecModule(ModuleApp):
@@ -270,7 +270,7 @@ class SupelecModule(ModuleApp):
     ]
 
 
-modules.register(SupelecModule)
+# modules.register(SupelecModule)
 
 
 class MetzModule(ModuleApp):
@@ -287,7 +287,7 @@ class MetzModule(ModuleApp):
     ]
 
 
-modules.register(MetzModule)
+# modules.register(MetzModule)
 
 
 class OperaModule(ModuleApp):
@@ -304,7 +304,7 @@ class OperaModule(ModuleApp):
     ]
 
 
-modules.register(OperaModule)
+# modules.register(OperaModule)
 
 
 class ArsenalModule(ModuleApp):
@@ -321,4 +321,4 @@ class ArsenalModule(ModuleApp):
     ]
 
 
-modules.register(ArsenalModule)
+# modules.register(ArsenalModule)
