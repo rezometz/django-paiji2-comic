@@ -113,8 +113,7 @@ def get_ng():
         'img_src': get_url('ng', NY_tz),
         'img_alt': 'National Geographic Photo of the Day',
         'legend': 'National Geographic Photo of the Day',
-        'legend_url': 'http://photography.nationalgeographic.com/\
-            photography/photo-of-the-day/',
+        'legend_url': 'http://photography.nationalgeographic.com/photography/photo-of-the-day/',
     }
 
 
