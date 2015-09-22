@@ -30,7 +30,10 @@ def get_fortune():
 
     except Exception as e:
 
-        fortune = u'Were they afraid that "e" being the most widely used letter in\nthe English language was going to war out thir xpnsiv kyboards if\nthy usd it all th tim?\n\n\t- Mike A. Harris on linux-kernel\n'
+        fortune = u'Were they afraid that "e" being the most widely \
+                used letter in\nthe English language was going \
+                to war out thir xpnsiv kyboards if\nthy usd it \
+                all th tim?\n\n\t- Mike A. Harris on linux-kernel\n'
         print("fortune : error reading `fortune` command")
         print("fortune : exception :" + e.message)
 
@@ -58,7 +61,7 @@ def get_fortune():
 #     except Exception as e:
 #         print("get_littre : " + e.message)
 #         return dict()
-# 
+#
 #     return {'link': link, 'definition': definition}
 
 
@@ -92,6 +95,7 @@ def get_h16():
         nb=3,
     )
 
+
 @register.inclusion_tag('comic/feed_block.html')
 def get_supelec():
     return get_feed(
@@ -99,6 +103,7 @@ def get_supelec():
         url='http://www.supelec.fr/rss_actu_428.xml',
         nb=5,
     )
+
 
 @register.inclusion_tag('comic/feed_block.html')
 def get_metz():
@@ -108,6 +113,7 @@ def get_metz():
         nb=5,
     )
 
+
 @register.inclusion_tag('comic/feed_block.html')
 def get_opera():
     return get_feed(
@@ -115,6 +121,7 @@ def get_opera():
         url='http://opera.metzmetropole.fr/site/_rss_agenda.php',
         nb=5,
     )
+
 
 @register.inclusion_tag('comic/feed_block.html')
 def get_arsenal():

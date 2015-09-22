@@ -78,8 +78,7 @@ def get_tokei():
     url_str = datetime.now(Metz_tz).strftime('%H%M')
     return {
         'img_src':
-                'http://www.bijint.com/assets/pict/jp/pc/' +\
-                 url_str + '.jpg',
+            'http://www.bijint.com/assets/pict/jp/pc/' + url_str + '.jpg',
         'img_alt': url_str,
         'legend': 'bijin tokei',
         'legend_url': 'http://www.bijint.com/jp/'
@@ -114,7 +113,8 @@ def get_ng():
         'img_src': get_url('ng', NY_tz),
         'img_alt': 'National Geographic Photo of the Day',
         'legend': 'National Geographic Photo of the Day',
-        'legend_url': 'http://photography.nationalgeographic.com/photography/photo-of-the-day/',
+        'legend_url': 'http://photography.nationalgeographic.com/\
+            photography/photo-of-the-day/',
     }
 
 

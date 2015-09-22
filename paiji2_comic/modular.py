@@ -44,7 +44,7 @@ class CalvinAndHobbesComicModule(ModuleApp):
             name='calvin-and-hobbes-comic',
             library='comic',
             tag='get_calvin_and_hobbes',
-            cache_time=2* 60 * 60,
+            cache_time=2 * 60 * 60,
         ),
     ]
 

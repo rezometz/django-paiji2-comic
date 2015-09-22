@@ -32,7 +32,8 @@ def urlopen(url, timeout=TIMEOUT):
     request = urllib2.Request(url)
     request.add_header(
         'User-Agent',
-        'Mozilla/5.0 (X11; Fedora; Linux x86_64; rv:40.0) Gecko/20100101 Firefox/40.0',
+        'Mozilla/5.0 (X11; Fedora; \
+        Linux x86_64; rv:40.0) Gecko/20100101 Firefox/40.0',
     )
     request.add_header('Referer', 'duckduckgo.com')
     request.add_header('DNT', '1')
@@ -58,7 +59,7 @@ class Downloader:
 
     def __init__(self, url_pattern, filename_pattern, tz=NY_tz):
         self.url_pattern = url_pattern
-        self.filename_pattern = filename_pattern 
+        self.filename_pattern = filename_pattern
         self.tz = tz
 
     def get_url(self):
@@ -105,7 +106,7 @@ class GoComicDownloader(Downloader):
             'img',
             src=re.compile(r"assets\.amuniversal\.com"),
         )
-        img_src = unicode(imgs[1]['src'])  # best quality
+        img_src = unicode(imgs[1]['src'])  # best quality
         return img_src
 
 
@@ -144,10 +145,11 @@ class NGDownloader(Downloader):
         self.tz = NY_tz
 
     def get_url(self):
-        url = 'http://photography.nationalgeographic.com/photography/photo-of-the-day/'
+        url = 'http://photography.nationalgeographic.com/\
+            photography/photo-of-the-day/'
         content = parse(url)
         img_url_str = content.find(
-            attrs={'class':'primary_photo'}
+            attrs={'class': 'primary_photo'}
         ).img['src']
         return 'http:' + img_url_str
 
@@ -161,7 +163,7 @@ class EAIOTDownloader(Downloader):
     def get_url(self):
         url = 'http://www.earthobservatory.nasa.gov/IOTD/'
         content = parse(url)
-        img_url_str = content.find(attrs={'class':'daily-image'}).img['src']
+        img_url_str = content.find(attrs={'class': 'daily-image'}).img['src']
         return img_url_str
 
 
@@ -171,13 +173,14 @@ class METDownloader(Downloader):
         self.tz = NY_tz
 
     def get_url(self):
-        rss_url = 'http://www.metmuseum.org/collection/artwork-of-the-day?rss=1'
+        rss_url =\
+            'http://www.metmuseum.org/collection/artwork-of-the-day?rss=1'
         entry = feedparser.parse(rss_url).entries[0]
         html_content = parse(entry.link)
         img = html_content.find(attrs={'class': 'image-container'}).img
         img_src = img['src']
         return img_src
-    
+
 
 garfield = {
     'url_pattern': 'http://garfield.com/uploads/strips/%Y-%m-%d.jpg',
@@ -211,9 +214,9 @@ if __name__ == '__main__':
             Downloader(**d).dl()
         except Exception as e:
             print(
-                'Error (' +\
-                d['filename_pattern'] +\
-                ') : ' +\
+                'Error (' +
+                d['filename_pattern'] +
+                ') : ' +
                 e.message
             )
 
