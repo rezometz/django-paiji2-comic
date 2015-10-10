@@ -10,7 +10,8 @@ class GarfieldComicModule(ModuleApp):
             name='garfield-comic',
             library='comic',
             tag='get_garfield',
-            cache_time=60 * 60,
+            cache_time=5,
+            personal=False,
         ),
     ]
 
@@ -27,7 +28,8 @@ class USAcresComicModule(ModuleApp):
             name='us-acres-comic',
             library='comic',
             tag='get_us_acres',
-            cache_time=60 * 60,
+            cache_time=5,
+            personal=False,
         ),
     ]
 
@@ -44,7 +46,8 @@ class CalvinAndHobbesComicModule(ModuleApp):
             name='calvin-and-hobbes-comic',
             library='comic',
             tag='get_calvin_and_hobbes',
-            cache_time=2 * 60 * 60,
+            cache_time=5,
+            personal=False,
         ),
     ]
 
@@ -61,7 +64,8 @@ class NancyComicModule(ModuleApp):
             name='nancy-comic',
             library='comic',
             tag='get_nancy',
-            cache_time=2 * 60 * 60,
+            cache_time=5,
+            personal=False,
         ),
     ]
 
@@ -79,6 +83,7 @@ class ThatIsPricelessModule(ModuleApp):
             library='comic',
             tag='get_that_is_priceless',
             cache_time=5,
+            personal=False,
         ),
     ]
 
@@ -96,6 +101,7 @@ class BijinTokeiModule(ModuleApp):
             library='comic',
             tag='get_tokei',
             cache_time=30,
+            personal=False,
         ),
     ]
 
@@ -112,7 +118,8 @@ class APODModule(ModuleApp):
             name='Astronomical Picture Of the Day',
             library='comic',
             tag='get_apod',
-            cache_time=2 * 60 * 60,
+            cache_time=5,
+            personal=False,
         ),
     ]
 
@@ -129,7 +136,8 @@ class MathImgModule(ModuleApp):
             name='Image des Maths',
             library='comic',
             tag='get_math_image',
-            cache_time=2 * 60 * 60,
+            cache_time=5,
+            personal=False,
         ),
     ]
 
@@ -146,12 +154,13 @@ class FortuneModule(ModuleApp):
             name='Fortune',
             library='fortune',
             tag='get_fortune',
-            cache_time=5,
+            cache_time=30 + 3,
+            personal=False,
         ),
     ]
 
 
-# modules.register(FortuneModule)
+modules.register(FortuneModule)
 
 
 class NGModule(ModuleApp):
@@ -163,7 +172,8 @@ class NGModule(ModuleApp):
             name='National Geographic Photo of the Day',
             library='comic',
             tag='get_ng',
-            cache_time=2 * 60 * 60,
+            cache_time=5,
+            personal=False,
         ),
     ]
 
@@ -180,7 +190,8 @@ class EAModule(ModuleApp):
             name='Earth Observatory Image of the Day',
             library='comic',
             tag='get_eaiotd',
-            cache_time=2 * 60 * 60,
+            cache_time=5,
+            personal=False,
         ),
     ]
 
@@ -197,7 +208,8 @@ class MetArtworkModule(ModuleApp):
             name='Artwork of the day',
             library='comic',
             tag='get_met_artwork',
-            cache_time=60*60,
+            cache_time=5,
+            personal=False,
         ),
     ]
 
@@ -214,12 +226,13 @@ class LittreModule(ModuleApp):
             name='Littre definition',
             library='fortune',
             tag='get_littre',
-            cache_time=5,
+            cache_time=10 * 60 + 7,
+            personal=False,
         ),
     ]
 
 
-# modules.register(LittreModule)
+modules.register(LittreModule)
 
 
 class SaintModule(ModuleApp):
@@ -231,12 +244,13 @@ class SaintModule(ModuleApp):
             name='Saint du jour',
             library='fortune',
             tag='get_saint',
-            cache_time=60 * 60,
+            cache_time=2 * 60 * 60 + 66,
+            personal=False,
         ),
     ]
 
 
-# modules.register(SaintModule)
+modules.register(SaintModule)
 
 
 class H16Module(ModuleApp):
@@ -249,11 +263,12 @@ class H16Module(ModuleApp):
             library='fortune',
             tag='get_h16',
             cache_time=30 * 60,
+            personal=False,
         ),
     ]
 
 
-# modules.register(H16Module)
+modules.register(H16Module)
 
 
 class SupelecModule(ModuleApp):
@@ -265,12 +280,13 @@ class SupelecModule(ModuleApp):
             name='Supelec',
             library='fortune',
             tag='get_supelec',
-            cache_time=60 * 60,
+            cache_time=2 * 60 * 60 - 100,
+            personal=False,
         ),
     ]
 
 
-# modules.register(SupelecModule)
+modules.register(SupelecModule)
 
 
 class MetzModule(ModuleApp):
@@ -282,12 +298,13 @@ class MetzModule(ModuleApp):
             name='Metz',
             library='fortune',
             tag='get_metz',
-            cache_time=60 * 60,
+            cache_time=2 * 60 * 60 - 47,
+            personal=False,
         ),
     ]
 
 
-# modules.register(MetzModule)
+modules.register(MetzModule)
 
 
 class OperaModule(ModuleApp):
@@ -299,12 +316,13 @@ class OperaModule(ModuleApp):
             name='Opera',
             library='fortune',
             tag='get_opera',
-            cache_time=60 * 60,
+            cache_time=2 * 60 * 60 + 10,
+            personal=False,
         ),
     ]
 
 
-# modules.register(OperaModule)
+modules.register(OperaModule)
 
 
 class ArsenalModule(ModuleApp):
@@ -316,9 +334,10 @@ class ArsenalModule(ModuleApp):
             name='Arsenal',
             library='fortune',
             tag='get_arsenal',
-            cache_time=60 * 60,
+            cache_time=2 * 60 * 60 + 87,
+            personal=False,
         ),
     ]
 
 
-# modules.register(ArsenalModule)
+modules.register(ArsenalModule)
